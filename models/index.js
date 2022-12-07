@@ -12,9 +12,10 @@ Category.hasMany(Product, {
   foreignKey: "category_id",
 });
 
-Product.belongsToMany(Tag, { through: "ProductTag" });
+//ProductTag is the junction table that references the foreign keys, product id and tag id.
+Product.belongsToMany(Tag, { through: ProductTag, uniqueKey: false });
 
-Tag.belongsToMany(Product, { through: "ProductTag" });
+Tag.belongsToMany(Product, { through: ProductTag, uniqueKey: false });
 
 module.exports = {
   Product,
@@ -23,11 +24,3 @@ module.exports = {
   ProductTag,
 };
 
-//One to Many relationship
-//Category.hasmany(Products)
-//Products.belongsto(Category)
-
-//Many to Many relationship
-//ProductTag is the junction table that references the foreign keys, product id and tag id.
-//Product.belongsToMany(Tag, { through: "ProductTag" });
-//Tag.belongsToMany(Product, { through: "ProductTag" });

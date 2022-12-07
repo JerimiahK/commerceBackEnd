@@ -37,10 +37,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// update a Category by name
+// update a Category by id
 router.put("/:id", async (req, res) => {
   try {
-    const categoryUpdate = Category.update(
+    const categoryUpdate = await Category.update(
       {
         category_name: req.body.category_name,
       },
